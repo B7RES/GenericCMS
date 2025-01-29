@@ -1,0 +1,46 @@
+﻿@model IEnumerable<VillaNumber>
+
+<h1>
+    Villa list
+</h1>
+
+<div class="card-body">
+    <a asp-controller="VillaNumber" asp-action="Create" class="btn btn-primary">Create New</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Villa.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Villa_Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpecialDetails)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Villa.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Villa_Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SpecialDetails)
+                </td>
+                <td>
+                    <a asp-action="Update" asp-controller="VillaNumber" asp-route-villaNumberId="@item.Villa_Number">Edit</a> |
+                    <a asp-action="Delete" asp-controller="VillaNumber" asp-route-villaNumberId="@item.Villa_Number">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
