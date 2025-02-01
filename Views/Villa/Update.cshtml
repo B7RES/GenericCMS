@@ -3,43 +3,51 @@
 
 
 <div class="card-body border p-4">
-    <form method="post" class="row">
+    <form method="post" class="row" enctype="multipart/form-data">
         <div class="col-12">
             <h1>Edit Villa</h1>
         </div>
-        <div class="p-3">
-            <div class="form-floating py-1 col-12">
-                <input asp-for="Name" class="form-control border shadow" />
-                <label asp-for="Name" class="ms-2">Name</label>
-                <span asp-validation-for="Name" class="text-danger"></span>
+        <div class="col-10">
+            <div class="p-3">
+                <div class="form-floating py-1 col-12">
+                    <input asp-for="Name" class="form-control border shadow" />
+                    <label asp-for="Name" class="ms-2">Name</label>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-1 col-12">
+                    <input asp-for="Description" class="form-control border shadow" />
+                    <label asp-for="Description" class="ms-2">Description</label>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-1 col-12">
+                    <input asp-for="Price" class="form-control border shadow" />
+                    <label asp-for="Price" class="ms-2"></label>
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-1 col-12">
+                    <input asp-for="Sqft" class="form-control border shadow" />
+                    <label asp-for="Sqft" class="ms-2">Sqft</label>
+                    <span asp-validation-for="Sqft" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-1 col-12">
+                    <input asp-for="Ocupancy" class="form-control border shadow" />
+                    <label asp-for="Ocupancy" class="ms-2">Ocupancy</label>
+                    <span asp-validation-for="Ocupancy" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-1 col-12">
+                    <input asp-for="Image" class="form-control border shadow" />
+                    <input asp-for="ImageUrl" hidden class="form-control border shadow" />
+                    <label asp-for="ImageUrl" class="ms-2"></label>
+                    <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-floating py-1 col-12">
-                <input asp-for="Description" class="form-control border shadow" />
-                <label asp-for="Description" class="ms-2">Description</label>
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-floating py-1 col-12">
-                <input asp-for="Price" class="form-control border shadow" />
-                <label asp-for="Price" class="ms-2"></label>
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-floating py-1 col-12">
-                <input asp-for="Sqft" class="form-control border shadow" />
-                <label asp-for="Sqft" class="ms-2">Sqft</label>
-                <span asp-validation-for="Sqft" class="text-danger"></span>
-            </div>
-            <div class="form-floating py-1 col-12">
-                <input asp-for="Ocupancy" class="form-control border shadow" />
-                <label asp-for="Ocupancy" class="ms-2">Ocupancy</label>
-                <span asp-validation-for="Ocupancy" class="text-danger"></span>
-            </div>
-            <div class="form-floating py-1 col-12">
-                <input asp-for="ImageUrl" class="form-control border shadow" />
-                <label asp-for="ImageUrl" class="ms-2"></label>
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
-            </div>
-        </div>
 
+        </div>
+        <div class="col-2">
+            <img src="@Model.ImageUrl" width="100%"
+            style="border-radius: 5px;border:1px solid #bbb9b9"/>
+        </div>
+       
         <div class="row pt-2">
             <div class="col-6 col-md-3">
                 <button type="submit" class="btn btn-success w-100">
