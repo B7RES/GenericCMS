@@ -1,0 +1,103 @@
+﻿@model IEnumerable<Booking>
+
+@{
+    var status = Context.Request.Query["status"];
+
+    var approved = "";
+    var pending = "";
+    var checkedIn = "";
+    var completed = "";
+    var cancelled = "";
+
+    switch(status){
+        case SD.StatusApproved:
+            approved = "text-white bg-success";
+            break;
+        case SD.StatusPending:
+            pending = "text-white bg-success";
+            break;
+        case SD.StatusCheckedIn:
+            checkedIn = "text-white bg-success";
+            break;
+        case SD.StatusCompleted:
+            completed = "text-white bg-success";
+            break;
+        case SD.StatusCancelled:
+            cancelled = "text-white bg-success";
+            break;
+
+        default:
+            break;  
+    }
+}
+<h1>
+    Booking list
+</h1>
+<div class="d-flex justify-content-end pb-4 pt-2">
+    <ul class="list-group list-group-horizontal">
+        <a style="text-decoration:none;" asp-controller="Booking" asp-action="Index"
+        asp-route-status="@SD.StatusPending">
+        <li class="list-group-item @pending">@SD.StatusPending</li>
+        </a>
+
+        <a style="text-decoration:none;" asp-controller="Booking" asp-action="Index"
+           asp-route-status="@SD.StatusApproved">
+        <li class="list-group-item @approved">@SD.StatusApproved</li>
+        </a>
+
+        <a style="text-decoration:none;" asp-controller="Booking" asp-action="Index"
+           asp-route-status="@SD.StatusCheckedIn">
+        <li class="list-group-item @checkedIn">@SD.StatusCheckedIn</li>
+        </a>
+
+        <a style="text-decoration:none;" asp-controller="Booking" asp-action="Index"
+           asp-route-status="@SD.StatusCompleted">
+        <li class="list-group-item @completed">@SD.StatusCompleted</li>
+        </a>
+
+        <a style="text-decoration:none;" asp-controller="Booking" asp-action="Index"
+           asp-route-status="@SD.StatusCancelled">
+        <li class="list-group-item @cancelled">@SD.StatusCancelled</li>
+        </a>
+    </ul>
+</div>
+<table id="tblBookings" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(Model => Model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckInDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nights)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalCost)
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+
+@section Scripts{
+    <script src="~/js/booking.js"></script>
+}

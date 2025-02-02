@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/css/spinner.css"/>
+    <link rel="stylesheet" href="//cdn.datatables.net/2.2.1/css/dataTables.dataTables.min.css"/>
 </head>
 <body>
     <header>
@@ -29,15 +31,18 @@
                                 <a class="dropdown-item text-dark" asp-controller="VillaNumber" asp-action="Index">Villa Numbers</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item text-dark" asp-controller="Amenity" asp-action="Index">Amenities</a>
+                                <a class="dropdown-item text-dark" asp-controller="Booking" asp-action="Index" asp-route-status="@SD.StatusApproved">Bookings</a>
                             </div>
                         </li>
                     </ul>
+                    <partial name="_LoginPartial"/>
                 </div>
             </div>
         </nav>
     </header>
     <div class="">
         <main role="main">
+            <div class="loading spinner" style="display:none">Loading</div>
             <partial name="_Notification" />
             @RenderBody()
         </main>
@@ -51,6 +56,8 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js" integrity="sha512-sH8JPhKJUeA9PWk3eOcOl8U+lfZTgtBXD41q6cO/slwxGHCxKcW45K4oPCUhHG7NMB4mbKEddVmPuTXtpbCbFA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="//cdn.datatables.net/2.2.1/js/dataTables.min.js" asp-append-version="true"></script>
+    @* <script src="~/js/jquery.unobtrusive-ajax.min.js"></script> *@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

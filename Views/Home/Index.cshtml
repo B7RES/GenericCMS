@@ -25,14 +25,13 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-    <form method="post"
-          asp-action="GetVillasByDate">
+    <form method="post" asp-action="GetVillasByDate">
         <div class="row p-0 mx-0 py-4">
 
             <div class="col-12 col-md-5  offset-md-1 pl-2  pr-2 pr-md-0">
                 <div class="form-group">
                     <label>Check In Date</label>
-                    <input asp-format="dd/MM/yyyy" asp-for="CheckInDate" type="date" class="form-control" />
+                    <input asp-for="CheckInDate" type="date" class="form-control" />
                 </div>
             </div>
 
@@ -63,3 +62,32 @@
     </form>
 </div>
 
+
+@section scripts{
+    <script>
+        function fnLoadVillaList() {
+            $('.spinner').show();
+            var objData = {
+                checkInDate: $("#CheckInDate").val(),
+                nights: $("#Nights").val()
+            }
+
+            $.ajax({
+                url: "@Url.Action("GetVillasByDate", "Home")",
+                data: objData,
+                type: "POST",
+                success: function (response) {
+                    $("#VillasList").empty();
+                    $("#VillasList").html(response);
+                    $('.spinner').hide();
+                },
+                failure: function (response) {
+                    $('.spinner').hide();
+                },
+                error: function (response) {
+                    $('.spinner').hide();
+                }
+            })
+        }
+    </script>
+}

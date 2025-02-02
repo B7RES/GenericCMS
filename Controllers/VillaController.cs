@@ -1,10 +1,12 @@
 ﻿using Application.Common.Interfaces;
 using Domain.Entities;
 using Infrastructure.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Web.Controllers
 {
+    [Authorize]
     public class VillaController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
